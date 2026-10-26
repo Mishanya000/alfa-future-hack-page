@@ -106,11 +106,17 @@ cd alfafuture-hack</code></pre></div>
       <div class="mode-full" hidden><p>Откройте <code>common/llm/.env</code> в текстовом редакторе и добавьте строку ниже, заменив значение на ключ команды. Файл должен называться именно <code>.env</code>, без расширения <code>.txt</code>.</p>
         <div class="terminal"><div class="terminal-bar"><span>СОДЕРЖИМОЕ common/llm/.env · НЕ КОМАНДА</span><button class="copy" type="button">Копировать</button></div><pre><code># Ключ команды для проверки; можно указать собственный ключ прокси.
 # Команда: &lt;название вашей команды&gt;
+# Copy to common/llm/.env for live LLM calls.
+# Saved demo works without a key; new analyses and chat require one.
 LLM_API_KEY=your_team_key
 LLM_BASE_URL=https://changellenge.up.railway.app/v1
 AGENT_MODEL=z-ai/glm-5.3-flash
 CHEAP_MODEL=google/gemma-4-26b-a4b-it
-VISION_MODEL=qwen/qwen3-vl-30b-a3b-instruct</code></pre></div>
+VISION_MODEL=qwen/qwen3-vl-30b-a3b-instruct
+# Optional Langfuse tracing; leave keys empty to disable.
+LANGFUSE_SECRET_KEY=
+LANGFUSE_PUBLIC_KEY=
+LANGFUSE_BASE_URL=https://us.cloud.langfuse.com</code></pre></div>
         <p class="micro">Замените <code>your_team_key</code> своим ключом и укажите название команды в комментарии. Файл читает сервер; не включайте его в репозиторий или HTML. Переменные окружения процесса имеют приоритет над файлом. Ключ должен быть активен на время проверки; доступность моделей зависит от прокси.</p>
       </div>
     </div>
