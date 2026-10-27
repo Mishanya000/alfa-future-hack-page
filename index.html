@@ -2749,6 +2749,13 @@
                 анализ.
               </p>
               <div class="hero-actions">
+                <a
+                  class="button"
+                  href="https://alfafuture-insights.duckdns.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Запустить демо <span aria-hidden="true">↗</span></a
+                >
                 <a class="button" href="#repo"
                   >Запустить проект <span aria-hidden="true">↗</span></a
                 ><a class="button secondary" href="#data">Подключить данные</a>
@@ -2815,7 +2822,7 @@
               ><label class="check-row"
                 ><input type="checkbox" data-ready="1" /><span
                   >Код проекта с GitHub и
-                  <strong>архив со всей папкой <code>data</code>, который передаст команда</strong
+                  <strong>архив с данными и готовыми кешами, который передаст команда</strong
                   >.</span
                 ></label
               ><label class="check-row"
@@ -2860,24 +2867,31 @@ git checkout 16cae718fad901beff99dc9f0f2de2cf44e24a29</code></pre>
         <section id="data">
           <div class="section-head">
             <span class="section-number">03</span>
-            <div><h2>Загрузить данные</h2></div>
+            <div><h2>Загрузить кешированные данные</h2></div>
           </div>
           <div class="section-content">
+            <p>
+              В архиве собран полный комплект данных для запуска: новости, аналитика банка,
+              эмбеддинги, ответы моделей и готовые карточки. Перенесите его в проект целиком,
+              чтобы после запуска сразу открыть подготовленную ленту.
+            </p>
             <ol class="steps">
               <li>
                 Откройте
                 <a href="https://drive.google.com/drive/folders/1XGRh2DnkidTDsNnJ8SN-zcKC1UMWg4BW?usp=sharing">архив с данными в Google Диске</a>
                 и нажмите «Скачать».
               </li>
-              <li>Распакуйте скачанный архив на компьютере. Внутри находится папка <code>data</code>.</li>
               <li>
-                Скопируйте <strong>содержимое папки <code>data</code> из архива</strong> в папку
-                <code>data</code> в корне проекта. Объедините папки; если система предложит заменить
-                совпадающие файлы, выберите файлы из архива команды.
+                Распакуйте скачанный архив на компьютере. Внутри находятся папки
+                <code>data</code>, <code>backend</code> и <code>stage5_insight_detection</code>.
+              </li>
+              <li>
+                Перенесите <strong>всё содержимое архива в папку проекта</strong> и замените
+                все совпадающие файлы.
               </li>
               <li>
                 Сверьтесь со структурой ниже. Путь должен быть <code>alfafuture/data/…</code>, а не
-                <code>alfafuture/data/data/…</code>.
+                <code>alfafuture/alfafuture-data/data/…</code>.
               </li>
             </ol>
             <pre class="file-tree">alfafuture/
@@ -2886,6 +2900,14 @@ git checkout 16cae718fad901beff99dc9f0f2de2cf44e24a29</code></pre>
 ├── common/
 │   └── llm/
 │       └── .env                         ← создаётся на следующем шаге
+├── backend/
+│   └── demo_cache/
+│       ├── U_14366_ceo.json              ← готовый кеш из архива
+│       └── U_14366_cfo.json              ← готовый кеш из архива
+├── stage5_insight_detection/
+│   └── analytics_insights/
+│       └── cache/
+│           └── U_14366_cfo.json          ← готовый кеш из архива
 └── data/                                ← вся папка из архива команды
     ├── df_Uid_data_hack.csv              ← компании
     ├── df_Uid_payment_hack.csv           ← платежи
@@ -2902,16 +2924,13 @@ git checkout 16cae718fad901beff99dc9f0f2de2cf44e24a29</code></pre>
         ├── compact/                     ← короткие версии карточек
         ├── suggested/                   ← вопросы-подсказки, если есть
         └── top5/                        ← сохранённое ранжирование, если есть</pre>
-            <p>
-              Docker Compose автоматически подключает папку <code>data</code> к контейнерам через
-              <code>./data:/app/data</code>. Достаточно только скопировать файлы на компьютер.
-            </p>
             <details>
               <summary>Если проект уже запускался</summary>
               <p>
                 Выполните <code>docker compose down</code> и сделайте копию своей папки
-                <code>data</code>. После этого добавьте файлы из архива. Если хотите сохранить
-                прежние данные отдельно, скачайте проект в другую папку и запустите его оттуда.
+                <code>data</code>. После этого замените <code>data</code> целиком и перенесите
+                три JSON-кеша, как описано выше. Если хотите сохранить прежний проект отдельно,
+                скачайте его в другую папку и запустите оттуда.
               </p>
             </details>
           </div>
